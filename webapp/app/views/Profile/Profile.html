@@ -1,0 +1,18 @@
+{{set . "title" "Home"}}
+{{template "header.html" .}}
+
+<h1>{{ .user.Username}}</h1>
+<a href="{{ .gitUrl}}">Connect to github</a>
+<p>Auth: {{ .user.GithubAuth}}</p>
+
+<p>Authorized repos</p>
+{{ range $key, $value := .user.Repos }}
+    <p>{{ $value.Reponame }}</p>
+    {{ if $value.Authorized}}
+        <a href="/profile/deauthorize/{{ $value.Reponame }}">Deauthorize</a>
+    {{ else }}
+        <a href="/profile/authorize/{{ $value.Reponame }}">Authorize</a>
+    {{ end}}
+{{ end }}
+
+{{template "footer.html" .}}
