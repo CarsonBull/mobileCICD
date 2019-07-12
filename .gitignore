@@ -18,5 +18,5 @@
 .idea/
 
 # Compiled artifacts
-./scheduler/scheduler
-./scheduler/docs
+scheduler/scheduler
+scheduler/docs
