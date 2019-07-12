@@ -1,0 +1,17 @@
+FROM golang:1.12
+
+# define work directory
+WORKDIR /go/src/github.com/CarsonBull/mobileCICD/scheduler
+
+COPY . .
+
+RUN go get -u -v github.com/swaggo/swag/cmd/swag && \
+    go install github.com/swaggo/swag/cmd/swag && \
+    swag init
+
+RUN go get -d -v ./...
+#RUN go install -v ./...
+
+RUN ["go", "get", "github.com/githubnemo/CompileDaemon"]
+
+ENTRYPOINT CompileDaemon -log-prefix=false -build="go build ." -command="./scheduler"

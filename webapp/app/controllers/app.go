@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"github.com/CarsonBull/mobileCICD/webapp/app/models"
 	"github.com/revel/revel"
 )
@@ -23,8 +22,6 @@ func (c App) Index() revel.Result {
 func (c App) Login(username string) revel.Result{
 
 	user := models.GetUser(username)
-
-	fmt.Println(user)
 
 	// TODO: remove this. This creates a user if one is not found.
 	if user.Username == "" {

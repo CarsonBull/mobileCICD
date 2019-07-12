@@ -8,7 +8,9 @@ Simple webapp to allow users to manage their mobile CI/CD pipeline
 
 ##### Roadmap
 
-* Add a way for users to define their pipelines.
+* Add a way for users to define their pipelines
+* Remove storage and logic around the pipeline from the webapp. 
+* Allow the webapp to connect to different pipelines? (Still not entirely sure wht this would look like or what it means)
 
 ### Scheduler
 

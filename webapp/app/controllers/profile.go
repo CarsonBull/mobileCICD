@@ -29,8 +29,6 @@ func (c Profile) Profile() revel.Result {
 
 	user := models.GetUser(username.(string))
 
-	fmt.Println(user)
-
 	return c.Render(user, username, gitUrl)
 }
 

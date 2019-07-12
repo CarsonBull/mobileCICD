@@ -1,0 +1,32 @@
+version: '2.1'
+services:
+  scheduler:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8090:8090"
+    depends_on:
+      - postgresdb
+    environment:
+      - DB_URL=postgresdb
+      - DB_PORT=5432
+      - SSL=disable
+      - ENV=dev
+    networks:
+      - backend
+
+
+  postgresdb:
+    image: postgres
+    expose:
+      - "5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: test
+    networks:
+      - backend
+
+networks:
+  backend:
